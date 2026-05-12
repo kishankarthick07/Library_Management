@@ -40,7 +40,19 @@ async function main() {
     console.error('FATAL: JWT_SECRET is not set');
     process.exit(1);
   }
-  await connectDB();
+
+  // Connect to MongoDB only if MONGODB_URI is configured
+  if (process.env.MONGODB_URI) {
+    try {
+      await connectDB();
+    } catch (err) {
+      console.error('MongoDB connection failed:', err.message);
+      console.log('Running without database');
+    }
+  } else {
+    console.log('MongoDB not connected - running without database');
+  }
+
   startFineCron();
   app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);

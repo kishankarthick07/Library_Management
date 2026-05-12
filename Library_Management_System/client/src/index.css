@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffffff 0%, #fef3c7 100%);
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-yellow-200;
+  }
+
+  .gradient-yellow {
+    @apply bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  .animate-fade-in-delay {
+    animation: fadeInDelay 0.8s ease-in-out 0.2s both;
+  }
+
+  .animate-pulse-yellow {
+    animation: pulseYellow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .animate-bounce-soft {
+    animation: bounceSoft 3s ease-in-out infinite;
+  }
+}
+
+@layer components {
+  .btn-yellow {
+    @apply px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-400 to-yellow-500 text-white font-semibold shadow-lg hover:shadow-xl hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 transform hover:scale-105 active:scale-95;
+  }
+
+  .btn-white {
+    @apply px-6 py-3 rounded-xl bg-white text-yellow-600 font-semibold shadow-lg border-2 border-yellow-300 hover:border-yellow-500 hover:shadow-xl transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply relative bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-yellow-100 hover:border-yellow-400;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDelay {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceSoft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseYellow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(251, 191, 36, 0);
+  }
+}
